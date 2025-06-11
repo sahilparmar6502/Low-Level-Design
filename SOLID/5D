@@ -1,0 +1,63 @@
+Dependency Inversion Principle
+- components should depend on abstraction not concretion
+
+class EmailService {
+    void sendEmail(String message) {
+        System.out.println("Email sent: " + message);
+    }
+}
+
+class Notification {
+    private EmailService emailService = new EmailService();  // tightly coupled
+
+    void send(String message) {
+        emailService.sendEmail(message);
+    }
+}
+
+Notification class depends directly on EmailService.
+If you want to add SMSService, you need to modify Notification, which breaks flexibility.
+
+Solution:
+
+interface MessageService {
+    void sendMessage(String message);
+}
+
+Concrete Class
+
+class EmailService implements MessageService {
+    public void sendMessage(String message) {
+        System.out.println("Email sent: " + message);
+    }
+}
+
+class SMSService implements MessageService {
+    public void sendMessage(String message) {
+        System.out.println("SMS sent: " + message);
+    }
+}
+
+class Notification {
+    private MessageService service;
+
+    public Notification(MessageService service) {
+        this.service = service;
+    }
+
+    void send(String message) {
+        service.sendMessage(message);  // works for any implementation
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MessageService email = new EmailService();
+        Notification notification = new Notification(email);
+        notification.send("Welcome!");
+
+        MessageService sms = new SMSService();
+        Notification smsNotification = new Notification(sms);
+        smsNotification.send("OTP: 123456");
+    }
+}

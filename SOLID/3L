@@ -1,0 +1,64 @@
+Liskov Substitution Principle
+- every subclass or derived class should be substitutable for their base or parent class
+- "Objects of a superclass should be replaceable with objects of its subclasses without breaking the application."
+
+- If class S is a subclass of class T, then objects of type T should be replaceable with objects of type S without breaking the behavior of the program.
+
+class Vehicle {
+    public void startEngine() {
+        System.out.println("Engine started");
+    }
+
+    public void fly() {
+        System.out.println("Flying in the air");
+    }
+}
+
+class Car extends Vehicle {
+    @Override
+    public void fly() {
+        throw new UnsupportedOperationException("Car can't fly");
+    }
+}
+
+class Airplane extends Vehicle {
+    @Override
+    public void fly() {
+        System.out.println("Airplane is flying");
+    }
+}
+
+❌ What’s Wrong?
+The Car is inheriting fly() from Vehicle, which doesn't make sense for a car.
+
+Replacing Vehicle with Car in code that calls fly() will break the behavior.
+
+This violates LSP.
+
+Solution:
+
+interface Vehicle {
+    void startEngine();
+}
+
+interface Flyable {
+    void fly();
+}
+
+class Car implements Vehicle {
+    public void startEngine() {
+        System.out.println("Car engine started");
+    }
+}
+
+class Airplane implements Vehicle, Flyable {
+    public void startEngine() {
+        System.out.println("Airplane engine started");
+    }
+
+    public void fly() {
+        System.out.println("Airplane is flying");
+    }
+}
+
+Design your class hierarchy using correct abstractions (interfaces or base classes) to preserve behavior when substituting.

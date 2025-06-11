@@ -1,0 +1,48 @@
+Open & Closed Principle
+- Classes should be open for extention, closed for modification
+- ex:
+
+class NotificationService {
+    public void sendNotification(String type, String message) {
+        if (type.equals("email")) {
+            System.out.println("Sending Email: " + message);
+        } else if (type.equals("sms")) {
+            System.out.println("Sending SMS: " + message);
+        }
+    }
+}
+
+- If you want to add Push Notification, you have to modify the class.
+- This violates OCP, because the class changes whenever a new type is added.
+
+// Step 1: Create an interface
+interface Notification {
+    void send(String message);
+}
+
+// Step 2: Implement for different types
+class EmailNotification implements Notification {
+    public void send(String message) {
+        System.out.println("Sending Email: " + message);
+    }
+}
+
+class SMSNotification implements Notification {
+    public void send(String message) {
+        System.out.println("Sending SMS: " + message);
+    }
+}
+
+// Step 3: New types can be added without modifying the core logic
+class PushNotification implements Notification {
+    public void send(String message) {
+        System.out.println("Sending Push Notification: " + message);
+    }
+}
+
+// Step 4: Service class uses abstraction
+class NotificationService {
+    public void notifyUser(Notification notification, String message) {
+        notification.send(message);
+    }
+}

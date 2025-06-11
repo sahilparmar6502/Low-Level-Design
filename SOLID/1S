@@ -1,0 +1,37 @@
+Single Responsibility Principle
+- each class should have only one reason to change (to change by only one object)
+- ex:
+
+class Invoice {
+    void calculateTotal() {
+        // logic to calculate total
+    }
+
+    void saveToDatabase() {
+        // logic to save invoice to DB
+    }
+
+    void printInvoice() {
+        // logic to print the invoice
+    }
+}
+
+- this class has three responsibility
+
+class Invoice {
+    void calculateTotal() {
+        // logic to calculate total
+    }
+}
+
+class InvoiceRepository {
+    void saveToDatabase(Invoice invoice) {
+        // logic to save invoice
+    }
+}
+
+class InvoicePrinter {
+    void printInvoice(Invoice invoice) {
+        // logic to print invoice
+    }
+}

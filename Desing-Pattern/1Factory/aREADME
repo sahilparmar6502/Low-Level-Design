@@ -1,0 +1,6 @@
+FactoryPattern/
+├── Shape.java
+├── Circle.java
+├── Rectangle.java
+├── ShapeFactory.java
+└── Main.java
