@@ -41,13 +41,13 @@ public class Board{
     public void setPieceRow(int row,boolean isWhite){
 
         this.board[row][0] =  new Cell(row,0,PieceFactory.createPiece("bishop",isWhite));
-        this.board[row][0] =  new Cell(row,1,PieceFactory.createPiece("knight",isWhite));
-        this.board[row][0] =  new Cell(row,2,PieceFactory.createPiece("rook",isWhite));
-        this.board[row][0] =  new Cell(row,3,PieceFactory.createPiece("queen",isWhite));
-        this.board[row][0] =  new Cell(row,4,PieceFactory.createPiece("king",isWhite));
-        this.board[row][0] =  new Cell(row,5,PieceFactory.createPiece("rook",isWhite));
-        this.board[row][0] =  new Cell(row,6,PieceFactory.createPiece("knight",isWhite));
-        this.board[row][0] =  new Cell(row,7,PieceFactory.createPiece("bishop",isWhite));
+        this.board[row][1] =  new Cell(row,1,PieceFactory.createPiece("knight",isWhite));
+        this.board[row][2] =  new Cell(row,2,PieceFactory.createPiece("rook",isWhite));
+        this.board[row][3] =  new Cell(row,3,PieceFactory.createPiece("queen",isWhite));
+        this.board[row][4] =  new Cell(row,4,PieceFactory.createPiece("king",isWhite));
+        this.board[row][5] =  new Cell(row,5,PieceFactory.createPiece("rook",isWhite));
+        this.board[row][6] =  new Cell(row,6,PieceFactory.createPiece("knight",isWhite));
+        this.board[row][7] =  new Cell(row,7,PieceFactory.createPiece("bishop",isWhite));
     }
 
     public void setPawnRow(int row,int rows,boolean isWhite){
