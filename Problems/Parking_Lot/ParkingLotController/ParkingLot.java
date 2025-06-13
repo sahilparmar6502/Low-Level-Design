@@ -5,13 +5,24 @@ import java.util.ArrayList;
 import ParkingSlotsPackage.ParkingSlot;
 import VehiclePackage.Vehicle;
 
+
+// singleton pattern
+
 public class ParkingLot{
 
-    List<ParkingSlot> parkingSlots;
+    private static ParkingLot instance;
+    private List<ParkingSlot> parkingSlots;
 
-    public ParkingLot(List<ParkingSlot> parkingSlots){
+    private ParkingLot(List<ParkingSlot> parkingSlots){
         this.parkingSlots = new ArrayList<>();
         this.parkingSlots = parkingSlots;
+    }
+
+    public static ParkingLot getInstance(List<ParkingSlot> parkingSlots){
+        if(instance == null){
+            instance = new ParkingLot(parkingSlots);
+        }
+        return instance;
     }
 
     public ParkingSlot findVacantSlot(String vehicleType){

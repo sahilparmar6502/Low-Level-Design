@@ -19,7 +19,7 @@ public class Main{
         slots.add(new CarParkingSlot("B1","car"));
         slots.add(new CarParkingSlot("B2","car"));
 
-        ParkingLot parkingLot = new ParkingLot(slots);
+        ParkingLot parkingLot = ParkingLot.getInstance(slots);
 
         FareStrategy bikeFareStrategy = new BasicFareStrategy();
         FareStrategy carFareStrategy = new PremiumFareStrategy();
