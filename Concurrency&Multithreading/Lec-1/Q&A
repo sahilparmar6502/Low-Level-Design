@@ -1,0 +1,28 @@
+1. When to Use Processes vs Threads?
+
+2. Why specifically Threads and not processes ? 
+Threads share memory space, making communication between them faster compared to processes. 
+This ensures smooth and responsive performance without unnecessary duplication of resources.
+
+3. What is the difference between start() and run() methods? 
+The start() method begins thread execution and calls the run() method, while the run() method simply contains the code to be executed. Directly calling run() won't create a new thread; it will execute in the current thread.
+
+4. Can we call the start() twice?
+- no
+- Because a Java thread can be started only once. After it has been started and finished execution (either normally or due to an exception), it cannot be restarted.
+
+📌 Why Is This Restriction Necessary?
+The start() method is tightly bound with the thread lifecycle.
+Once a thread completes, its internal thread state is marked as terminated.
+JVM does not allow reinitializing the internal thread machinery of an already finished thread object.
+
+5. Thread Safety?
+
+6. sleep() vs wait()
+
+- java.lang.Thread
+- java.lang.Object
+
+7. 'synchronized' keywork
+- ensures that only one thread can access the shared resources in multithreaded environment
+- part of java thread safety mechanism and helps in mutual exclusion

@@ -1,0 +1,13 @@
+1. How Thread Executors and Thread Pools are connected?
+- Executors are ther interface
+- Thread Pools are actual implementation behind that interface
+
+- Executors -> Job Manager
+- Thread Pools -> Group of Worker
+
+2. What if we don't write executor.shutdown()?
+- java internally creates Non-Deamon threads for the Pools
+- Non-Deamon Threads keep the java application alive.
+- JVM will not shut down until all the Non-Deamon Threads finish execution or are explicitly terminated.
+
+-> executor.shutdown() -> No more tasks will be submitted. Shut everything down.
