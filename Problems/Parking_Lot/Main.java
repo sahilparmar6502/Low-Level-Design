@@ -36,5 +36,7 @@ public class Main{
         parkingLot.parkVehicle(car1);
         parkingLot.parkVehicle(car2);
         parkingLot.parkVehicle(car3);
+
+        System.out.println(bike1.calculateFare(4,DurationType.HOURS));
     }
 };
